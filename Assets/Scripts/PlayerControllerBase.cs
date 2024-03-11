@@ -20,17 +20,17 @@ public class PlayerControllerBase : MonoBehaviour
 
 
     #region INITIALIZAION
-    private void Awake()
+    public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         StartCoroutine(PlayerUpdate());
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         StopAllCoroutines();
     }
@@ -42,7 +42,7 @@ public class PlayerControllerBase : MonoBehaviour
     {
         while (true)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 OnJump?.Invoke(Jumpforce);
                 yield return new WaitForSeconds(JumpCooldown);

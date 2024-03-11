@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerController : PlayerControllerBase
 {
+    public Animator animator;
+
     private void Awake()
     {
+        base.Awake();
         OnJump += Jump;
         OnDie += Die;
     }
@@ -13,6 +16,7 @@ public class PlayerController : PlayerControllerBase
     private void Jump(float force)
     {
         rb.velocityY = force;
+        animator.SetTrigger("Jump");
     }
 
     private void Die()
