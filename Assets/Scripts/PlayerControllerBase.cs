@@ -9,6 +9,8 @@ public class PlayerControllerBase : MonoBehaviour
 {
     // PUBLIC:
 
+    public static PlayerControllerBase Instance;
+
     public float Jumpforce;
     public float JumpCooldown;
     public string ObstacleTag;
@@ -29,6 +31,8 @@ public class PlayerControllerBase : MonoBehaviour
     #region INITIALIZAION
     public void Awake()
     {
+        Instance = this;
+
         rb = GetComponent<Rigidbody2D>();
         DefaultGravityScale = rb.gravityScale;
 

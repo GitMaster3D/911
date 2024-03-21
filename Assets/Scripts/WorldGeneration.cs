@@ -18,7 +18,11 @@ public class WorldGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerControllerBase.Instance.OnDie += () =>
+        {
+            list.Clear();
+            Destroy(gameObject);
+        };
     }
 
     // Update is called once per frame
