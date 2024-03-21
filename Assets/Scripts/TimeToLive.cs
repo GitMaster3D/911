@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class TimeToLive : MonoBehaviour
 {
-    [HideInInspector    ]public float timer;
+    // Public:
+    [HideInInspector] public float timer;
     public float ttl;
     public List<GameObject> babalist;
+
+
+    // Private:
+    private bool running = true;
+
+
     void Start(){
         timer =ttl;
+
+        PlayerControllerBase.Instance.OnDie += () =>
+        {
+            running = false;
+        };
     }
+
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (!running) return;
+
         timer -= Time.deltaTime;
         if(timer<= 0){
             timer = ttl;
