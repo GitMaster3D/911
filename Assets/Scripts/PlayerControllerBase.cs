@@ -15,14 +15,22 @@ public class PlayerControllerBase : MonoBehaviour
     public Action<float> OnJump;
     public Action OnDie;
     public Action OnJumpReady;
+    public Action OnStartedGame;
     [HideInInspector] public Rigidbody2D rb;
 
 
+    // PRIVATE:
+    private bool GravityActive = false;
+    private float DefaultGravityScale;
 
     #region INITIALIZAION
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        DefaultGravityScale = rb.gravityScale;
+
+        // Disable gravity to give player a chance to start the game
+        StopGravity();
     }
 
     public void OnEnable()
@@ -42,6 +50,15 @@ public class PlayerControllerBase : MonoBehaviour
     {
         while (true)
         {
+            // Start Game When Player presses Space
+            if (!GravityActive && Input.GetKeyDown(KeyCode.Space))
+            {
+                StartGravity();
+                OnStartedGame?.Invoke();
+            }
+
+
+            // Jump When Player PResses Space
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 OnJump?.Invoke(Jumpforce);
@@ -53,6 +70,19 @@ public class PlayerControllerBase : MonoBehaviour
         }
     }
     #endregion
+
+
+    public void StartGravity()
+    {
+        rb.gravityScale = DefaultGravityScale;
+    }
+
+
+    public void StopGravity()
+    {
+        rb.gravityScale = 0;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
