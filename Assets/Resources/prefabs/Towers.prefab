@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  ttl: 11
+  ttl: 16
   babalist: []
 --- !u!114 &7717488524660412878
 MonoBehaviour:

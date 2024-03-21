@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float MenueDelay;
+    
     void Start()
     {
         PlayerControllerBase.Instance.OnDie += GoToMenue;
@@ -12,6 +14,12 @@ public class GameManager : MonoBehaviour
 
     public void GoToMenue()
     {
+        StartCoroutine(SceneChange());
+    }
+
+    private IEnumerator SceneChange()
+    {
+        yield return new WaitForSeconds(MenueDelay);
         SceneManager.LoadScene("MainMenue");
     }
 }
