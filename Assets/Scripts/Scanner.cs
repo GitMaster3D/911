@@ -20,6 +20,7 @@ public class Scanner : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collission){
         if(collission.gameObject.tag == "Player"){
             ScoreCounter.insance.score++;
+            
         }
     }
 }
