@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2445120103444668283}
   - component: {fileID: 6781629541403921488}
+  - component: {fileID: 4525847961965284404}
   m_Layer: 0
   m_Name: Scanner
   m_TagString: Untagged
@@ -78,6 +79,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &4525847961965284404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478373448071889199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dc795427286394c8e6c8bd0aca5415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
 --- !u!1 &4770109966853160526
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,5 +370,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  ttl: 22
+  ttl: 11
   babalist: []

@@ -31,7 +31,7 @@ public class WorldGeneration : MonoBehaviour
             list.Add(obj);
             vector3.y = Random.Range(-2.5f,2.5f);
             obj.transform.position += vector3 ;
-            if(spawndelay>2.5f){
+            if(spawndelay>2f){
                 spawndelay -= 0.1;
             }
             
