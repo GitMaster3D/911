@@ -12,11 +12,14 @@ public class PlayerControllerBase : MonoBehaviour
     public float Jumpforce;
     public float JumpCooldown;
     public string ObstacleTag;
+    [HideInInspector] public Rigidbody2D rb;
+
+    #region EVENTS
     public Action<float> OnJump;
     public Action OnDie;
     public Action OnJumpReady;
-    public Action OnStartedGame;
-    [HideInInspector] public Rigidbody2D rb;
+    public Action OnGameStarted;
+    #endregion
 
 
     // PRIVATE:
@@ -54,7 +57,7 @@ public class PlayerControllerBase : MonoBehaviour
             if (!GravityActive && Input.GetKeyDown(KeyCode.Space))
             {
                 StartGravity();
-                OnStartedGame?.Invoke();
+                OnGameStarted?.Invoke();
             }
 
 

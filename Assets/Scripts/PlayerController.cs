@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerController : PlayerControllerBase
     [SerializeField] private float Smoothtime;
 
     [SerializeField] private GameObject DeathParticleSystem;
+    [SerializeField] private CinemachineImpulseSource ImpulseSource;
 
 
 
@@ -30,6 +32,9 @@ public class PlayerController : PlayerControllerBase
         // Get Transform of Graphics Object
         if (Graphics == null)
             Graphics = GetComponentInChildren<SpriteRenderer>().gameObject.transform;
+
+        if (ImpulseSource == null)
+            ImpulseSource = GetComponentInChildren<CinemachineImpulseSource>();
     }
 
 
@@ -62,8 +67,12 @@ public class PlayerController : PlayerControllerBase
     {
         Destroy(gameObject);
 
+        // Play Explosion Particles
         var instance = Instantiate(DeathParticleSystem, transform.position, Quaternion.identity);
         instance.GetComponent<ParticleSystem>().Play();
+
+        // Screenshake
+        ImpulseSource.GenerateImpulse();
     }
 
 }
