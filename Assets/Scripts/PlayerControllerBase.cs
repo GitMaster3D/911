@@ -79,14 +79,6 @@ public class PlayerControllerBase : MonoBehaviour
     #endregion
 
 
-    public bool GetTouchDown()
-    {
-        foreach (var touch in Input.touches)
-            if (touch.phase == TouchPhase.Began)
-                return true;
-
-        return false;
-    }
 
 
     public void StartGravity()

@@ -12,6 +12,7 @@ public class PlayerController : PlayerControllerBase
 
     [SerializeField] private GameObject DeathParticleSystem;
     [SerializeField] private CinemachineImpulseSource ImpulseSource;
+    [SerializeField] private AudioClip[] DieSounds;
 
 
 
@@ -24,6 +25,7 @@ public class PlayerController : PlayerControllerBase
         base.Awake();
         OnJump += Jump;
         OnDie += Die;
+        OnDie += () => { SoundManager.instance.PlaySounds(DieSounds); };
     }
 
 
