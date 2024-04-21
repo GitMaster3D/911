@@ -58,7 +58,7 @@ public class PlayerControllerBase : MonoBehaviour
         while (true)
         {
             // Start Game When Player presses Space
-            if (!GravityActive && Input.GetKeyDown(KeyCode.Space))
+            if (!GravityActive && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 StartGravity();
                 OnGameStarted?.Invoke();
@@ -66,7 +66,7 @@ public class PlayerControllerBase : MonoBehaviour
 
 
             // Jump When Player PResses Space
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 OnJump?.Invoke(Jumpforce);
                 yield return new WaitForSeconds(JumpCooldown);
@@ -77,6 +77,16 @@ public class PlayerControllerBase : MonoBehaviour
         }
     }
     #endregion
+
+
+    public bool GetTouchDown()
+    {
+        foreach (var touch in Input.touches)
+            if (touch.phase == TouchPhase.Began)
+                return true;
+
+        return false;
+    }
 
 
     public void StartGravity()

@@ -19,7 +19,7 @@ public class PlayerController : PlayerControllerBase
     private Vector2 RotateVec;
 
 
-    public void Awake()
+    public new void Awake()
     {
         base.Awake();
         OnJump += Jump;
